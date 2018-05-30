@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165564</versionUuid>
+    <rule>
+        <name>GDPR_SAR_CASE_APP_uiFormAdHocTask</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164419</uuid>
+        <description></description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_163725</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=load(
+  local!files,
+  #"SYSTEM_SYSRULES_formLayout"(
+    label: ri!adhocTask.taskName &amp; " from " &amp; #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164431"(touser(ri!adHocTask.requestUser)),
+    instructions: "Complete the form below to submit your task.",
+    firstColumnContents: {
+      #"SYSTEM_SYSRULES_sectionLayout"(
+        label: "Request",
+        firstColumnContents: {
+          #"SYSTEM_SYSRULES_paragraphField"(
+            label: "Task Description",
+            value: ri!adhocTask.taskDescription,
+            readOnly: true()
+          ),
+          #"SYSTEM_SYSRULES_textField"(
+            label: "Request Date",
+            value: if(isnull(ri!adhocTask.requestDate), "", text(ri!adhocTask.requestDate,"MMM dd, yyyy hh:mm a")),
+            readOnly: true()
+          ),
+          #"SYSTEM_SYSRULES_textField"(
+            label: "Deadline",
+            value: if(isnull(ri!adhocTask.deadline), "", text(ri!adhocTask.deadline,"MMM dd, yyyy hh:mm a")),
+            readOnly: true()
+          )
+        },
+        secondColumnContents: {
+          #"SYSTEM_SYSRULES_textField"(
+            label:"Time remaining",
+            value: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164449"(ri!adHocTask.deadline-now()),
+            readOnly:true
+          ),
+          #"SYSTEM_SYSRULES_imageField"(
+            label: "Task Performance",
+            images: {
+              if(now()&gt;todatetime(ri!adhocTask.Deadline),
+                #"SYSTEM_SYSRULES_documentImage"(document: #"SYSTEM_SYSRULES_iconIndicator"("STATUS_NOTDONE"),altText:"Overdue",caption: "Overdue"),
+                #"SYSTEM_SYSRULES_documentImage"(document: #"SYSTEM_SYSRULES_iconIndicator"("STATUS_OK"),altText:"Overdue",caption: "Overdue")
+              )
+            },
+            size:"ICON"
+          )
+        },
+        isCollapsible: true()
+      ),
+      #"SYSTEM_SYSRULES_sectionLayout"(
+        label: "Response",
+        firstColumnContents: {
+          #"SYSTEM_SYSRULES_paragraphField"(
+            label: "Provide your response to this task assignment",
+            value: ri!adhocTask.CompletedComments,
+            saveInto: ri!adhocTask.CompletedComments,
+            required: true(),
+            readOnly: false()
+            ),
+          #"SYSTEM_SYSRULES_fileUploadField_v1"(
+            label: "Add Documents",
+            maxSelections: 8,
+            target: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164526",
+            value: local!files,
+            saveInto: local!files,
+            validations: {}
+          )
+        },
+        isCollapsible: false()
+      )
+    },
+    buttons: #"SYSTEM_SYSRULES_ButtonLayout"(
+      primaryButtons: {
+        #"SYSTEM_SYSRULES_ButtonWidgetSubmit"(
+          label: "Complete Task",
+          saveInto: {
+            a!save(
+              target: ri!adhocTask.Completed,
+              value: now()
+            ),
+            a!save(
+              target: ri!adhocTask.Status,
+              value: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164534"[2]
+            )
+          },
+          style: "PRIMARY"
+        )
+      }
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>adHocTask</name>
+            <type>
+                <name>GDPR_SAR_CASE_APP_AdHocTasking</name>
+                <namespace>urn:com:appian:types</namespace>
+            </type>
+        </namedTypedValue>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165564"/>
+    </history>
+</contentHaul>

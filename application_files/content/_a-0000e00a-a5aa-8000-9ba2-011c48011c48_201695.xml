@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_202176</versionUuid>
+    <rule>
+        <name>GDPR_SAR_CASE_OVERVIEW_PARTIAL</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_201695</uuid>
+        <description></description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145160</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#"SYSTEM_SYSRULES_sectionLayout_v1"(
+  label: "Case Overview",
+  contents: {#"SYSTEM_SYSRULES_columnsLayout"(
+            columns: {
+              #"SYSTEM_SYSRULES_columnLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Subject Name",
+                    labelPosition: "ABOVE",
+                    value: ri!SAR.Request.DataSubject.FullName,
+                    refreshAfter: "UNFOCUS",
+                    readonly: true,
+                    disabled: false,
+                    validations: {}
+                  ),
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Category of requestor",
+                    labelPosition: "ABOVE",
+                    value: ri!SAR.Request.Identification.RequestorType,
+                    refreshAfter: "UNFOCUS",
+                    readonly: true,
+                    validations: {}
+                  ),
+                  #"SYSTEM_SYSRULES_imageField_v1"(
+                    label: "Third Party",
+                    labelPosition: "ABOVE",
+                    images: {
+                      #"SYSTEM_SYSRULES_documentImage"(
+                        document: #"SYSTEM_SYSRULES_iconIndicator"(
+                          icon: "STATUS_OK"
+                        ),
+                        showwhen: ri!SAR.Request.Identification.IsThirdParty = true()
+                      ),
+                      #"SYSTEM_SYSRULES_documentImage"(
+                        document: #"SYSTEM_SYSRULES_iconIndicator"(
+                          icon: "STATUS_NOTDONE"
+                        ),
+                        showwhen: ri!SAR.Request.Identification.IsThirdParty = false()
+                      )
+                    },
+                    size: "ICON",
+                    isThumbnail: false,
+                    style: "STANDARD"
+                  )
+                }
+              ),
+              #"SYSTEM_SYSRULES_columnLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Request",
+                    labelPosition: "ABOVE",
+                    value: ri!SAR.Request.Identification.RequestorType,
+                    saveInto: {},
+                    refreshAfter: "UNFOCUS",
+                    readonly: true,
+                    validations: {}
+                  ),
+                  #"SYSTEM_SYSRULES_dateTimeField"(
+                    label: "Request Date",
+                    labelPosition: "ABOVE",
+                    value: ri!SAR.Letter_Date_Received,
+                    saveInto: {},
+                    readonly: true,
+                    validations: {}
+                  ),
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Case Ref.",
+                    labelPosition: "ABOVE",
+                    saveInto: {},
+                    refreshAfter: "UNFOCUS",
+                    readonly: true,
+                    validations: {},
+                    value:ri!SAR.ProcessId
+                  )
+                }
+              )
+            }
+          )}
+)</definition>
+        <namedTypedValue>
+            <name>SAR</name>
+            <type>
+                <name>GDPR_SAR_Subject_Access_Request</name>
+                <namespace>urn:com:appian:types</namespace>
+            </type>
+        </namedTypedValue>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users>
+                <userUuid>mmcosta</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_202176"/>
+    </history>
+</contentHaul>

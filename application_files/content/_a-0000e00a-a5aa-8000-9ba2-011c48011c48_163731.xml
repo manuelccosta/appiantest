@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_212312</versionUuid>
+    <rule>
+        <name>GDPR_SAR_TaskReport</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_163731</uuid>
+        <description>GDPR_SAR_TaskReport</description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_163725</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=load(
+  local!user: loggedInUser(),
+  local!gridPI: #"SYSTEM_SYSRULES_pagingInfo"(
+    1,
+    10,
+    #"SYSTEM_SYSRULES_sortInfo"(
+      field: "c6"
+    )
+  ),
+  local!statusFilter,
+  local!nameFilter,
+  #"SYSTEM_SYSRULES_dashboardLayout"(
+    firstColumnContents: {
+      #"SYSTEM_SYSRULES_sectionLayout"(
+        firstColumnContents: {
+          #"SYSTEM_SYSRULES_textField"(
+            label: "Task Name",
+            instructions: "Filters the report based on task name.",
+            value: local!nameFilter,
+            saveInto: local!nameFilter
+          )
+        },
+        secondColumnContents: {
+          #"SYSTEM_SYSRULES_dropdownField"(
+            label: "Status",
+            instructions: "Filters the report based on Task Status",
+            placeholderLabel: "All",
+            choiceLabels: {
+              "Assigned",
+              "Accepted"
+            },
+            choiceValues: {
+              0,
+              1
+            },
+            value: local!statusFilter,
+            saveInto: {
+              local!statusFilter,
+              a!save(
+                local!gridPI.startIndex,
+                1
+              )
+            }
+          )
+        }
+      ),
+      with(
+        local!icmTasks: a!queryProcessAnalytics(
+          report: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_163917",
+          contextProcessModels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164704",
+          query: #"SYSTEM_SYSRULES_query"(
+            logicalExpression: if(
+              and(
+                isnull(
+                  local!statusFilter
+                ),
+                isnull(
+                  local!nameFilter
+                )
+              ),
+              null,
+              #"SYSTEM_SYSRULES_queryLogicalExpression"(
+                operator: "AND",
+                filters: {
+                  if(
+                    isnull(
+                      local!statusFilter
+                    ),
+                    {},
+                    #"SYSTEM_SYSRULES_queryFilter"(
+                      field: "c1",
+                      operator: "=",
+                      value: local!statusFilter
+                    )
+                  ),
+                  if(
+                    isnull(
+                      local!nameFilter
+                    ),
+                    {},
+                    #"SYSTEM_SYSRULES_queryFilter"(
+                      field: "c0",
+                      operator: "includes",
+                      value: local!nameFilter
+                    )
+                  )
+                }
+              )
+            ),
+            pagingInfo: local!gridPI
+          )
+        ),
+        #"SYSTEM_SYSRULES_gridField"(
+          label: "GDPR Tasks",
+          instructions: "A list of all GDPR tasks for the current user.",
+          totalCount: local!icmTasks.totalCount,
+          columns: {
+            #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164726"(
+              columnConfig: local!icmTasks.columnConfigs[1],
+              data: local!icmTasks.data,
+              showLink: true()
+            ),
+            #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164726"(
+              columnConfig: local!icmTasks.columnConfigs[2],
+              data: local!icmTasks.data,
+              showLink: false()
+            ),
+            #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164726"(
+              columnConfig: local!icmTasks.columnConfigs[3],
+              data: local!icmTasks.data,
+              showLink: true()
+            ),
+            apply(
+              #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164726"(
+                columnConfig: _,
+                data: local!icmTasks.data,
+                showLink: false()
+              ),
+              ldrop(rdrop(local!icmTasks.columnConfigs,
+                1),
+                3
+              )
+            ),
+            #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164726"(
+              columnConfig: local!icmTasks.columnConfigs[9],
+              data: local!icmTasks.data,
+              showLink: true()
+            )
+          },
+          value: local!gridPI,
+          saveInto: local!gridPI
+        )
+      )
+    }
+  )
+)</definition>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_212312"/>
+    </history>
+</contentHaul>

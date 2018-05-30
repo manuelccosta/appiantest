@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="urn:com:appian:types"
+  xmlns:tns="urn:com:appian:types" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="%7Burn%3Acom%3Aappian%3Atypes%7DGDPR_SAR_Email.xsd"/>
+  <xsd:include schemaLocation="%7Burn%3Acom%3Aappian%3Atypes%7DGDPR_SAR_Request.xsd"/>
+  <xsd:complexType name="GDPR_SAR_Subject_Access_Request">
+    <xsd:annotation>
+      <xsd:documentation><![CDATA[GDPR_SAR_Subject_Access_Request]]></xsd:documentation>
+      <xsd:appinfo source="http://www.appian.com/ae/types/2009">
+        <ns2:Metadata xmlns:ns2="http://www.appian.com/ae/types/2009">
+          <ns2:versionUuid>0000e0cb-9729-8000-f92f-7f0000014e7a</ns2:versionUuid>
+          <ns2:history>
+            <ns2:historyInfo versionUuid="0000e0cb-9729-8000-f92f-7f0000014e7a"/>
+          </ns2:history>
+        </ns2:Metadata>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Id" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Id @GeneratedValue</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="EmailReceived" nillable="true" type="tns:GDPR_SAR_Email">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@OneToOne(cascade=CascadeType.ALL)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0"
+        name="LetterReceivedDocuments" nillable="true" type="xsd:int"/>
+      <xsd:element name="Request" nillable="true" type="tns:GDPR_SAR_Request">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@OneToOne(cascade=CascadeType.ALL)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ProcessId" nillable="true" type="xsd:int"/>
+      <xsd:element name="ProcessStep" nillable="true" type="xsd:int"/>
+      <xsd:element name="StartedOn" nillable="true" type="xsd:date"/>
+      <xsd:element name="Letter_Date_Received" nillable="true" type="xsd:dateTime"/>
+      <xsd:element name="ProcessStepName" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=255)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

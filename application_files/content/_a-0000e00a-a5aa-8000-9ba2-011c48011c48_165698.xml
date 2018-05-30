@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_166080</versionUuid>
+    <rule>
+        <name>GDPR_SAR_CASE_APP_getProgressStatus</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165698</uuid>
+        <description></description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140797</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>if(
+  ri!step =&gt; 5,
+  "Completed",
+  if(
+    ri!statusId = 0,
+    "Open",
+    if(
+      ri!statusId = 1,
+      "Canceled",
+      if(
+        ri!statusId = 2,
+        "Canceled",
+        if(
+          ri!statusId = 3,
+          "Canceled",
+          if(
+            ri!statusId = 4,
+            "Canceled",
+            if(
+              ri!statusId = 5,
+              "Canceled",
+              /*Exception*/
+              "Canceled"
+            )
+          )
+        )
+      )
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>statusId</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>step</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_166080"/>
+    </history>
+</contentHaul>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="urn:com:appian:types"
+  xmlns:tns="urn:com:appian:types" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="%7Burn%3Acom%3Aappian%3Atypes%7DGDPR_SAR_CASE_APP_Assignee.xsd"/>
+  <xsd:complexType name="GDPR_SAR_CASE_APP_AdHocTasking">
+    <xsd:annotation>
+      <xsd:appinfo source="http://www.appian.com/ae/types/2009">
+        <ns2:Metadata xmlns:ns2="http://www.appian.com/ae/types/2009">
+          <ns2:versionUuid>0002e0cb-972b-8000-f92f-7f0000014e7a</ns2:versionUuid>
+          <ns2:history>
+            <ns2:historyInfo versionUuid="0002e0cb-972b-8000-f92f-7f0000014e7a"/>
+          </ns2:history>
+        </ns2:Metadata>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Id" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Id @GeneratedValue</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="RequestUser" nillable="true" type="xsd:string"/>
+      <xsd:element name="TaskName" nillable="true" type="xsd:string"/>
+      <xsd:element name="TaskDescription" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=2000)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Assignees" nillable="true" type="tns:GDPR_SAR_CASE_APP_Assignee">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@OneToOne(cascade=CascadeType.ALL)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Status" nillable="true" type="xsd:string"/>
+      <xsd:element name="RequestDate" nillable="true" type="xsd:dateTime"/>
+      <xsd:element name="Deadline" nillable="true" type="xsd:dateTime"/>
+      <xsd:element name="Completed" nillable="true" type="xsd:dateTime"/>
+      <xsd:element name="CompletedBy" nillable="true" type="xsd:string"/>
+      <xsd:element name="ParentProcessID" nillable="true" type="xsd:int"/>
+      <xsd:element name="ParentCaseType" nillable="true" type="xsd:string"/>
+      <xsd:element name="ParentCaseId" nillable="true" type="xsd:int"/>
+      <xsd:element name="CompletedComments" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=2000)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="EntryId" nillable="true" type="xsd:string"/>
+      <xsd:element name="ProcessId" nillable="true" type="xsd:int"/>
+      <xsd:element name="TaskType" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

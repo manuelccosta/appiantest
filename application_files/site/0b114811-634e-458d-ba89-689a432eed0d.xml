@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<siteHaul xmlns:a="http://www.appian.com/ae/types/2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <versionUuid>d9fabbe5-f9cc-401d-8074-031d92eeb396</versionUuid>
+  <site a:uuid="0b114811-634e-458d-ba89-689a432eed0d" name="General Data Protection Regulation">
+    <description/>
+    <urlStub>gdpr-sar-cmt</urlStub>
+    <page>
+      <staticName>CREATE NEW REQUEST</staticName>
+      <description/>
+      <urlStub>new-case</urlStub>
+      <uiObject a:uuid="0002e037-edea-8000-f92f-7f0000014e7a" xsi:type="a:ProcessModel"/>
+      <iconId>f067</iconId>
+      <visibilityExpr>fn!true()</visibilityExpr>
+      <pageWidth>STANDARD</pageWidth>
+    </page>
+    <page>
+      <staticName>REPORTS</staticName>
+      <description/>
+      <urlStub>reports</urlStub>
+      <uiObject a:uuid="666bf0cc-1862-4c47-a856-cc1238c834b6" xsi:type="a:TempoReport"/>
+      <iconId>f200</iconId>
+      <visibilityExpr>fn!true()</visibilityExpr>
+      <pageWidth>STANDARD</pageWidth>
+    </page>
+    <page>
+      <staticName>TASK LIST</staticName>
+      <description/>
+      <urlStub>gdpr-tasks</urlStub>
+      <uiObject a:uuid="c9b88220-c7a4-4e28-af8a-06474240c856" xsi:type="a:TaskReport"/>
+      <iconId>f046</iconId>
+      <visibilityExpr>fn!true()</visibilityExpr>
+      <pageWidth>STANDARD</pageWidth>
+    </page>
+    <page>
+      <staticName>CASE OVERVIEW</staticName>
+      <description/>
+      <urlStub>cases</urlStub>
+      <uiObject a:uuid="6265820c-d1c8-4d23-9e87-8bcb4abf73ae" xsi:type="a:RecordType">
+        <a:isSystem>false</a:isSystem>
+        <a:security>16383</a:security>
+        <a:hideLatestNews>false</a:hideLatestNews>
+        <a:isExportable>true</a:isExportable>
+      </uiObject>
+      <iconId>f00b</iconId>
+      <visibilityExpr>fn!true()</visibilityExpr>
+      <pageWidth>STANDARD</pageWidth>
+    </page>
+    <visibility>268435456</visibility>
+    <headerBackgroundColor>#FFFFFF</headerBackgroundColor>
+    <selectedTabBackgroundColor/>
+    <faviconRef a:uuid="SYSTEM_CONTENT_SITES_DEFAULT_FAVICON" xsi:type="a:CollaborationDocument"/>
+    <faviconHref/>
+    <logoHref>https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/KPMG.svg/2000px-KPMG.svg.png</logoHref>
+    <headerBackgroundColorExpr/>
+    <selectedTabBackgroundColorExpr/>
+    <accentColor/>
+    <accentColorExpr/>
+    <logoExpr/>
+    <faviconExpr/>
+    <showName>true</showName>
+    <tempoLinkVisibility>HIDDEN</tempoLinkVisibility>
+    <showRecordNews>true</showRecordNews>
+  </site>
+  <roleMap>
+    <role name="site_editor">
+      <users/>
+      <groups>
+        <groupUuid>_e-0000e00a-a55f-8000-9aee-01075c01075c_189</groupUuid>
+      </groups>
+    </role>
+  </roleMap>
+  <history>
+    <historyInfo versionUuid="8bdf2ac3-b56e-454c-933e-b9d3b7bac508"/>
+    <historyInfo versionUuid="d9fabbe5-f9cc-401d-8074-031d92eeb396"/>
+  </history>
+</siteHaul>

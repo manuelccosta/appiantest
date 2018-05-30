@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<applicationHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e070-b047-8000-9ba2-011c48011c48_245060</versionUuid>
+    <application>
+        <name>GDPR_SAR</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140775</uuid>
+        <description>GDPR - Subject Access Request</description>
+        <parentUuid>SYSTEM_APPLICATIONS_ROOT</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <urlIdentifier>3gg5pA</urlIdentifier>
+        <published>true</published>
+        <public>false</public>
+        <associatedObjects>
+            <globalIdMap>
+                <item>
+                    <type>datatype</type>
+                    <uuids>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_Subject_Access_Request</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_Email</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_DataSubject</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_Assessment</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_PersonRequestingDetails</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_ThirdParty</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_DataSujectDocuments</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_DataSubjectPersonalDataProcess</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_Request</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_Verification</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_CollateandRedact</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_Identity</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_QC_Confirmation</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_CASE_APP_AdHocTasking</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_CASE_APP_Assignee</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_REQUEST_DATA</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_Identity_Documents</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_Letter</uuid>
+                        <uuid>{urn:com:appian:types}GDPR_SAR_DataProviders</uuid>
+                    </uuids>
+                </item>
+                <item>
+                    <type>dataStore</type>
+                    <uuids>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_163380</uuid>
+                    </uuids>
+                </item>
+                <item>
+                    <type>user</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>groupType</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>group</type>
+                    <uuids>
+                        <uuid>_e-0000e00a-a55f-8000-9aee-01075c01075c_161</uuid>
+                        <uuid>_e-0000e00a-a55f-8000-9aee-01075c01075c_162</uuid>
+                        <uuid>_e-0000e00a-a55f-8000-9aee-01075c01075c_163</uuid>
+                        <uuid>_e-0000e00a-a55f-8000-9aee-01075c01075c_164</uuid>
+                        <uuid>_e-0000e00a-a55f-8000-9aee-01075c01075c_165</uuid>
+                        <uuid>_e-0000e00a-a55f-8000-9aee-01075c01075c_168</uuid>
+                        <uuid>_e-0000e00a-a55f-8000-9aee-01075c01075c_189</uuid>
+                    </uuids>
+                </item>
+                <item>
+                    <type>content</type>
+                    <uuids>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140791</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140797</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140803</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140826</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140832</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140919</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140940</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141028</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141034</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141058</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141084</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141294</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141365</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141373</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141633</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141639</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141859</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_142174</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_142185</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_142221</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_142268</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_142475</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_142757</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_143510</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_144209</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_144537</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_144547</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145133</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145143</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145160</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145253</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145419</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145575</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145581</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145865</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145871</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_146198</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_146405</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_146727</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_146922</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_146954</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_151573</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_163725</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_163731</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_163901</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_163917</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164419</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164431</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164449</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164477</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164526</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164534</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164704</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164751</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164996</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165006</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165016</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165028</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165063</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165079</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165115</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165131</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165572</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165586</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165605</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165675</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165698</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165846</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_177319</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_200058</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_200146</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_201695</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_203352</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_206701</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145215</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164487</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164551</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145311</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_144215</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_144335</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164726</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165045</uuid>
+                        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165099</uuid>
+                        <uuid>_a-0000e070-b047-8000-9ba2-011c48011c48_225096</uuid>
+                        <uuid>_a-0000e070-b047-8000-9ba2-011c48011c48_226128</uuid>
+                        <uuid>_a-0000e070-b047-8000-9ba2-011c48011c48_233809</uuid>
+                    </uuids>
+                </item>
+                <item>
+                    <type>forum</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>processModelFolder</type>
+                    <uuids>
+                        <uuid>_g-0000e00a-a5a6-8000-f92f-7f0000014e7a_126</uuid>
+                    </uuids>
+                </item>
+                <item>
+                    <type>processModel</type>
+                    <uuids>
+                        <uuid>0002e037-edea-8000-f92f-7f0000014e7a</uuid>
+                        <uuid>0002e051-077c-8000-f92f-7f0000014e7a</uuid>
+                    </uuids>
+                </item>
+                <item>
+                    <type>portlet</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>page</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>application</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>tempoFeed</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>recordType</type>
+                    <uuids>
+                        <uuid>85fda145-e2b2-4cc0-b3b0-227561e1cc29</uuid>
+                        <uuid>6265820c-d1c8-4d23-9e87-8bcb4abf73ae</uuid>
+                    </uuids>
+                </item>
+                <item>
+                    <type>tempoReport</type>
+                    <uuids>
+                        <uuid>666bf0cc-1862-4c47-a856-cc1238c834b6</uuid>
+                    </uuids>
+                </item>
+                <item>
+                    <type>taskReport</type>
+                    <uuids>
+                        <uuid>c9b88220-c7a4-4e28-af8a-06474240c856</uuid>
+                    </uuids>
+                </item>
+                <item>
+                    <type>webApi</type>
+                    <uuids>
+                        <uuid>3fac04b7-3a92-4796-9db6-57080773b7e6</uuid>
+                    </uuids>
+                </item>
+                <item>
+                    <type>site</type>
+                    <uuids>
+                        <uuid>0b114811-634e-458d-ba89-689a432eed0d</uuid>
+                    </uuids>
+                </item>
+                <item>
+                    <type>adminSetting</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>thirdPartyCredentials</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>dataSource</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>embeddedSailTheme</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>connectedSystem</type>
+                    <uuids/>
+                </item>
+            </globalIdMap>
+        </associatedObjects>
+        <applicationNavigation/>
+        <applicationActions>
+            <action>
+                <displayLabel>GDPR SAR POC</displayLabel>
+                <description>GDPR SAR POC</description>
+                <processModelUuid>0002e037-edea-8000-f92f-7f0000014e7a</processModelUuid>
+                <actionUuid>5d86f6e9-da1c-4652-afb5-9412b525e864</actionUuid>
+            </action>
+        </applicationActions>
+        <associatedApplications>
+            <globalIdMap>
+                <item>
+                    <type>datatype</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>dataStore</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>user</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>groupType</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>group</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>content</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>forum</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>processModelFolder</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>processModel</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>portlet</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>page</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>application</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>tempoFeed</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>recordType</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>tempoReport</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>taskReport</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>webApi</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>site</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>adminSetting</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>thirdPartyCredentials</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>dataSource</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>embeddedSailTheme</type>
+                    <uuids/>
+                </item>
+                <item>
+                    <type>connectedSystem</type>
+                    <uuids/>
+                </item>
+            </globalIdMap>
+        </associatedApplications>
+    </application>
+    <roleMap>
+        <contentRoleMap public="true">
+            <role inherit="false" allowForAll="false" name="readers">
+                <users/>
+                <groups/>
+            </role>
+            <role inherit="false" allowForAll="false" name="authors">
+                <users/>
+                <groups/>
+            </role>
+            <role inherit="false" allowForAll="false" name="administrators">
+                <users>
+                    <userUuid>dsequeira</userUuid>
+                </users>
+                <groups>
+                    <groupUuid>_e-0000e00a-a55f-8000-9aee-01075c01075c_163</groupUuid>
+                </groups>
+            </role>
+            <role inherit="false" allowForAll="false" name="denyReaders">
+                <users/>
+                <groups/>
+            </role>
+            <role inherit="false" allowForAll="false" name="denyAuthors">
+                <users/>
+                <groups/>
+            </role>
+            <role inherit="false" allowForAll="false" name="denyAdministrators">
+                <users/>
+                <groups/>
+            </role>
+        </contentRoleMap>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_212009"/>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_212482"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_222737"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_222818"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_222924"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_222935"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_222948"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_222949"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_222950"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_222963"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_222969"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_223002"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224705"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224706"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224729"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224730"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224731"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224732"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224738"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224739"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224740"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224741"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224742"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224751"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224816"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224817"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224818"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224882"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224883"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_245060"/>
+    </history>
+</applicationHaul>

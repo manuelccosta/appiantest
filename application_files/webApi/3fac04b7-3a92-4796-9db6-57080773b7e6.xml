@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<webApiHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>11bb2fbf-b82c-43b4-a4b3-09b4268900de</versionUuid>
+    <webApi a:uuid="3fac04b7-3a92-4796-9db6-57080773b7e6" name="GDPR_SAR_NEW_REQUEST">
+        <a:description>start new gdpr request</a:description>
+        <a:expression>with(
+  local!pParams:'type!{urn:com:appian:types}GDPR_SAR_Subject_Access_Request'(),
+  local!input: #"SYSTEM_SYSRULES_fromJson"(
+      http!request.body
+    ),
+  #"SYSTEM_SYSRULES_startProcess"(
+    processModel: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_203352",
+    processParameters:local!pParams. ,
+    onSuccess: #"SYSTEM_SYSRULES_httpResponse"(
+      statusCode: 200,
+      headers: {
+        #"SYSTEM_SYSRULES_httpHeader"(name: "Content-Type", value: "application/json")
+      },
+      body: #"SYSTEM_SYSRULES_toJson"(
+        fv!processInfo
+      )
+    ),
+    onError: #"SYSTEM_SYSRULES_httpResponse"(
+      statusCode: 500,
+      headers: {
+        #"SYSTEM_SYSRULES_httpHeader"(name: "Content-Type", value: "application/json")
+      },
+      body: #"SYSTEM_SYSRULES_toJson"(
+        {
+          error: "There was an error starting the process"
+        }
+      )
+    )
+  )
+)</a:expression>
+        <a:urlAlias>request</a:urlAlias>
+        <a:httpMethod>POST</a:httpMethod>
+        <a:system>false</a:system>
+    </webApi>
+    <roleMap/>
+    <typedValue>
+        <type>
+            <name>WebApiRequest?list</name>
+            <namespace>http://www.appian.com/ae/types/2009</namespace>
+        </type>
+        <value>
+            <el>
+                <a:path/>
+                <a:headers>
+                    <a:name>Content-Type</a:name>
+                    <a:value>application/json</a:value>
+                </a:headers>
+                <a:body>{}</a:body>
+            </el>
+        </value>
+    </typedValue>
+    <history>
+        <historyInfo versionUuid="11bb2fbf-b82c-43b4-a4b3-09b4268900de"/>
+    </history>
+</webApiHaul>

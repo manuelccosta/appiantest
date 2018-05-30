@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recordTypeHaul xmlns:a="http://www.appian.com/ae/types/2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <versionUuid>9947514c-fb53-4c2b-bdcb-3cc9e93a685a</versionUuid>
+  <recordType a:uuid="85fda145-e2b2-4cc0-b3b0-227561e1cc29" name="GDPR_Task">
+    <a:pluralName>GDPR_Tasks</a:pluralName>
+    <a:description/>
+    <a:urlStub>OQ89qQ</a:urlStub>
+    <a:source a:uuid="0002e037-edea-8000-f92f-7f0000014e7a" xsi:type="a:ProcessModel"/>
+    <a:listViewTemplateExpr>#"SYSTEM_SYSRULES_recordGridLayoutColumns"(
+  pageSize: 50,
+  defaultSort: #"SYSTEM_SYSRULES_sortInfo"(
+    field: "iEmail",
+    ascending: fn!true()
+  ),
+  columns: {
+    #"SYSTEM_SYSRULES_gridLayoutColumn"(
+      label: "I Email",
+      field: "iEmail",
+      component: #"SYSTEM_SYSRULES_recordGrid_linkField"(
+        links: #"SYSTEM_SYSRULES_recordLink"(
+          label: rf!iEmail,
+          recordType: rp!type,
+          identifier: rp!id
+        )
+      )
+    ),
+    #"SYSTEM_SYSRULES_gridLayoutColumn"(
+      label: "I Email Body",
+      field: "iEmailBody",
+      component: #"SYSTEM_SYSRULES_recordGrid_textField"(
+        displayValue: rf!iEmailBody,
+        align: null
+      )
+    ),
+    #"SYSTEM_SYSRULES_gridLayoutColumn"(
+      label: "I Email Subject",
+      field: "iEmailSubject",
+      component: #"SYSTEM_SYSRULES_recordGrid_textField"(
+        displayValue: rf!iEmailSubject,
+        align: null
+      )
+    )
+  }
+)</a:listViewTemplateExpr>
+    <a:detailViewCfg>
+      <a:nameExpr>="Summary"</a:nameExpr>
+      <a:uiExpr/>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>summary</a:urlStub>
+      <a:headerExpr/>
+    </a:detailViewCfg>
+    <a:isSystem>false</a:isSystem>
+    <a:dataSrcExpr/>
+    <a:facetsListExpr/>
+    <a:titleExpr>rf!GDPR_SAR_Subject_Access_Request.Id
+
+/*rf!GDPR_SAR_Subject_Access_Request.Request.DataSubject*/</a:titleExpr>
+    <a:defaultFiltersExpr/>
+    <a:layoutType>GRID</a:layoutType>
+    <a:security>16383</a:security>
+    <a:hideLatestNews>false</a:hideLatestNews>
+    <a:isExportable>true</a:isExportable>
+  </recordType>
+  <roleMap/>
+  <history>
+    <historyInfo versionUuid="2750965f-8a60-4019-8170-aae139ed6ddb"/>
+    <historyInfo versionUuid="9947514c-fb53-4c2b-bdcb-3cc9e93a685a"/>
+  </history>
+</recordTypeHaul>

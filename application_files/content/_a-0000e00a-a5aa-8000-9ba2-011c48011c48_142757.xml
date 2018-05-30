@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_211244</versionUuid>
+    <rule>
+        <name>GDPR_SAR_GatheringData_Partial</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_142757</uuid>
+        <description>GDPR SAR - Gathering data from email or letter and SAR request (Partial)</description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140826</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= load(
+  {
+    if(
+      or(
+        isnull(
+          ri!SAR.Request.WasSentByEmail
+        ) = false,
+        isnull(
+          ri!SAR.Request.letters.dateReceived
+        ) = false
+      ),
+      {
+        #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_142475"(
+          IsEmailGatheringData: ri!SAR.Request.WasSentByEmail,
+          Email: ri!SAR.Request.email,
+          UploadedFile: ri!SAR.Request.Letters.documentId,
+          IsReadOnly: true(),
+          received_date: ri!SAR.Request.Letters.dateReceived
+        ),
+        #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141028"(
+          isreadonly: ri!readOnly,
+          SAR: ri!SAR
+        )
+      },
+      #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141028"(
+        isreadonly: ri!readOnly,
+        SAR: ri!SAR
+      )
+    )
+  }
+)</definition>
+        <namedTypedValue>
+            <name>SAR</name>
+            <type>
+                <name>GDPR_SAR_Subject_Access_Request</name>
+                <namespace>urn:com:appian:types</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>readOnly</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users>
+                <userUuid>dsequeira</userUuid>
+            </users>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_211244"/>
+    </history>
+</contentHaul>

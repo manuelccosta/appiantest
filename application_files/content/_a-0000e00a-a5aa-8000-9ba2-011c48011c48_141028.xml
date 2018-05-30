@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_210586</versionUuid>
+    <rule>
+        <name>GDPR_SAR_SubjectAccessRequestForm</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141028</uuid>
+        <description>GDPR SAR Subject Access Request Form</description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140826</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= load(
+  local!docId1: 'type!{urn:com:appian:types}GDPR_SAR_Identity_Documents'(),
+  local!docId2: 'type!{urn:com:appian:types}GDPR_SAR_Identity_Documents'(),
+  {
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: "Who is the Data Subject?",
+      contents: {
+        #"SYSTEM_SYSRULES_columnsLayout"(
+          columns: {
+            #"SYSTEM_SYSRULES_columnLayout"(
+              contents: {
+                #"SYSTEM_SYSRULES_dropdownField"(
+                  label: "Title",
+                  labelPosition: "ABOVE",
+                  placeholderLabel: "--- Select a Value ---",
+                  choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141058",
+                  choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141058",
+                  value: ri!SAR.Request.DataSubject.Title,
+                  saveInto: ri!SAR.Request.DataSubject.Title,
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_textField"(
+                  label: "Name",
+                  labelPosition: "ABOVE",
+                  value: ri!SAR.Request.DataSubject.Name,
+                  saveInto: ri!SAR.Request.DataSubject.Name,
+                  refreshAfter: "UNFOCUS",
+                  readonly: false,
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_textField"(
+                  label: "Surname",
+                  labelPosition: "ABOVE",
+                  value: ri!SAR.Request.DataSubject.Surname,
+                  saveInto: ri!SAR.Request.DataSubject.Surname,
+                  refreshAfter: "UNFOCUS",
+                  showwhen: true,
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_textField"(
+                  label: "Email Address",
+                  labelPosition: "ABOVE",
+                  instructions: "",
+                  placeholder: "",
+                  value: ri!SAR.Request.DataSubject.Email,
+                  saveInto: ri!SAR.Request.DataSubject.Email,
+                  refreshAfter: "UNFOCUS",
+                  showwhen: true,
+                  requiredmessage: "",
+                  readonly: false,
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_dateField"(
+                  label: "Date of birth (if under 16)",
+                  labelPosition: "ABOVE",
+                  value: ri!SAR.Request.DataSubject.DateBirth,
+                  saveInto: ri!SAR.Request.DataSubject.DateBirth,
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_integerField"(
+                  label: "Customer Reference Number",
+                  labelPosition: "ABOVE",
+                  value: ri!SAR.Request.DataSubject.CustId,
+                  saveInto: ri!SAR.Request.DataSubject.CustId,
+                  refreshAfter: "UNFOCUS",
+                  validations: {}
+                )
+              }
+            ),
+            #"SYSTEM_SYSRULES_columnLayout"(
+              contents: {
+                #"SYSTEM_SYSRULES_textField"(
+                  label: "Address Line 1",
+                  labelPosition: "ABOVE",
+                  value: ri!SAR.Request.DataSubject.Address1,
+                  saveInto: ri!SAR.Request.DataSubject.Address1,
+                  refreshAfter: "UNFOCUS",
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_textField"(
+                  label: "Address Line 2",
+                  labelPosition: "ABOVE",
+                  value: ri!SAR.Request.DataSubject.Address2,
+                  saveInto: ri!SAR.Request.DataSubject.Address2,
+                  refreshAfter: "UNFOCUS",
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_textField"(
+                  label: "Address Line 3",
+                  labelPosition: "ABOVE",
+                  value: ri!SAR.Request.DataSubject.Address3,
+                  saveInto: ri!SAR.Request.DataSubject.Address3,
+                  refreshAfter: "UNFOCUS",
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_textField"(
+                  label: "Telephone number (if we need to contact you about your request)",
+                  labelPosition: "ABOVE",
+                  value: ri!SAR.Request.DataSubject.TelephoneNumber,
+                  saveInto: ri!SAR.Request.DataSubject.TelephoneNumber,
+                  refreshAfter: "UNFOCUS",
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_textField"(
+                  label: "Post Code",
+                  labelPosition: "ABOVE",
+                  value: ri!SAR.Request.DataSubject.PostCode,
+                  saveInto: ri!SAR.Request.DataSubject.PostCode,
+                  refreshAfter: "UNFOCUS",
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_dropdownField"(
+                  label: "Category of the requestor",
+                  labelPosition: "ABOVE",
+                  placeholderLabel: "--- Select a Value ---",
+                  choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141084",
+                  choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141084",
+                  value: ri!SAR.Request.DataSubject.Type,
+                  saveInto: ri!SAR.Request.DataSubject.Type,
+                  validations: {}
+                )
+              }
+            )
+          }
+        )
+      },
+      iscollapsible: false,
+      isinitiallycollapsed: false
+    ),
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: "Proof of identity",
+      contents: {
+        #"SYSTEM_SYSRULES_forEach"(
+          items: ri!SAR.Request.dataSubject.Identity_Documents,
+          expression: {
+            #"SYSTEM_SYSRULES_dropdownField"(
+              label: "Proof #"&amp;fv!index,
+              labelPosition: "ABOVE",
+              placeholderLabel: "--- Select a Value ---",
+              choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141633",
+              choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141633",
+              value: fv!item.type,
+              saveInto: fv!item.type,
+              disabled: ri!IsReadOnly,
+              validations: {}
+            ),
+            #"SYSTEM_SYSRULES_fileUploadField_v1"(
+              label: "",
+              labelPosition: "ABOVE",
+              target: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_144335",
+              value:fv!item.docId,
+              saveInto:fv!item.docId,
+              validations: {},
+              buttonstyle: "PRIMARY",
+              buttonsize: "SMALL"
+            )
+          }
+        ),
+            #"SYSTEM_SYSRULES_linkField"(
+      label: "",
+      links: #"SYSTEM_SYSRULES_dynamicLink"(
+        label: "+Add Proof of Identity",
+        saveInto: {
+          a!save(
+            ri!SAR.Request.dataSubject.Identity_Documents,
+            append(
+              ri!SAR.Request.dataSubject.Identity_Documents,
+              'type!{urn:com:appian:types}GDPR_SAR_Identity_Documents'()
+            )
+          )
+        }
+      ),
+      align: "LEFT"
+    )
+      },
+      iscollapsible: false,
+      isinitiallycollapsed: false
+    ),
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: "Request",
+      contents: {
+        #"SYSTEM_SYSRULES_checkboxField"(
+          label: "",
+          labelPosition: "ABOVE",
+          choiceLabels: {
+            "Was the request made by a third-party?"
+          },
+          choiceValues: {
+            true()
+          },
+          value: if(
+            or(
+              ri!SAR.Request.requestor.isThirdParty = false(),
+              isnull(
+                ri!SAR.Request.requestor.isThirdParty
+              )
+            ),
+            null,
+            true()
+          ),
+          saveInto: ri!SAR.Request.requestor.isThirdParty,
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "What is the type of the Third Party?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165846",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165846",
+          showwhen: ri!SAR.Request.requestor.isThirdParty = true(),
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Does the third party have the legal authorization to request the data on behalf of the data subject?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+          saveInto: {},
+          showwhen: ri!SAR.Request.requestor.isThirdParty = true(),
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Is this a government agency that is entitled to the information/documentation?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+          saveInto: {},
+          showwhen: ri!SAR.Request.requestor.isThirdParty = true(),
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Is there a legally binding document requiring the production of the information (court order, power of attorney, production order)?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+          saveInto: {},
+          showwhen: ri!SAR.Request.requestor.isThirdParty = true(),
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Is the request part of a law enforcement investigation?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+          showwhen: ri!SAR.Request.requestor.isThirdParty = true(),
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Request Purpose",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140919",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140919",
+          value: ri!SAR.request.requestType,
+          saveInto: ri!SAR.request.requestType,
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "What is the requestor  asking for copy of/access to?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141373",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141373",
+          value: ri!SAR.Request.askingFor,
+          saveInto: ri!SAR.Request.askingFor,
+          showwhen: like(
+            ri!SAR.Request.dataSubject.Type,
+            "*colleague*"
+          ),
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Requested Infromation (copy of/access to)",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141365",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141365",
+          value: ri!SAR.Request.askingFor,
+          saveInto: ri!SAR.Request.askingFor,
+          showwhen: like(
+            ri!SAR.Request.dataSubject.Type,
+            "*customer*"
+          ),
+          validations: {}
+        )
+      }
+    ),
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: "Identity Verification",
+      contents: {
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Was the requestor checked against the verification systems?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+          value: ri!SAR.Request.requestor.verified,
+          saveInto: ri!SAR.Request.requestor.verified,
+          disabled: ri!IsReadOnly,
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Has the requestor provided proof of identity?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+          value: ri!SAR.Request.requestor.proofID,
+          saveInto: ri!SAR.Request.requestor.proofID,
+          disabled: ri!IsReadOnly,
+          validations: {}
+        )
+      },
+      iscollapsible: false,
+      isinitiallycollapsed: false
+    )
+  }
+)</definition>
+        <namedTypedValue>
+            <name>IsReadOnly</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>SAR</name>
+            <type>
+                <name>GDPR_SAR_Subject_Access_Request</name>
+                <namespace>urn:com:appian:types</namespace>
+            </type>
+        </namedTypedValue>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_210586"/>
+    </history>
+</contentHaul>

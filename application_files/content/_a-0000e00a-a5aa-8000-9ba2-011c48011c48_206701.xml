@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_210904</versionUuid>
+    <rule>
+        <name>GDPR_SAR_APPROVE_REQUEST_PARTIAL</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_206701</uuid>
+        <description></description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145160</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= load(
+  local!cancel,
+  #"SYSTEM_SYSRULES_formLayout_v1"(
+    label: "Approve Request",
+    instructions: "",
+    contents: {
+        #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141294"(
+          Email: ri!SAR.Request.Email,
+          IsReadOnly: ri!IsReadOnly
+        )
+    },
+    buttons: #"SYSTEM_SYSRULES_ButtonLayout"(
+      primaryButtons: {
+        #"SYSTEM_SYSRULES_ButtonWidgetSubmit"(
+          label: "Reject",
+          confirmheader: "Invalid Form",
+          confirmmessage: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_144537",
+          confirmbuttonlabel: "",
+          value: false(),
+          saveInto: ri!SAR.Request.Isvalid,
+          size: "STANDARD",
+          style: "DESTRUCTIVE"
+        ),
+        #"SYSTEM_SYSRULES_ButtonWidgetSubmit"(
+          label: "Approve",
+          confirmheader: "Submit Form",
+          confirmmessage: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_144547",
+          value: true(),
+          saveInto: ri!SAR.Request.Isvalid,
+          style: "PRIMARY"
+        )
+      },
+      secondaryButtons: {
+       #"SYSTEM_SYSRULES_ButtonWidgetSubmit"(
+         label: "Cancel",
+         value: true,
+         saveInto: local!cancel,
+         style: "LINK",
+         skipValidation: true
+       )
+     }
+    ),
+    validations: {}
+  )
+)</definition>
+        <namedTypedValue>
+            <name>SAR</name>
+            <type>
+                <name>GDPR_SAR_Subject_Access_Request</name>
+                <namespace>urn:com:appian:types</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>isReadOnly</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_210904"/>
+    </history>
+</contentHaul>

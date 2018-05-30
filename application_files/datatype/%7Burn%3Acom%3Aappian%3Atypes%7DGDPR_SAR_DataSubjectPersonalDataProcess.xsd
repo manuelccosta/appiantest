@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="urn:com:appian:types"
+  xmlns:tns="urn:com:appian:types" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="GDPR_SAR_DataSubjectPersonalDataProcess">
+    <xsd:annotation>
+      <xsd:documentation><![CDATA[GDPR SAR - How do you believe we process your/the Data Subject’s personal data?]]></xsd:documentation>
+      <xsd:appinfo source="http://www.appian.com/ae/types/2009">
+        <ns2:Metadata xmlns:ns2="http://www.appian.com/ae/types/2009">
+          <ns2:versionUuid>0006e0cb-972a-8000-f92f-7f0000014e7a</ns2:versionUuid>
+          <ns2:history>
+            <ns2:historyInfo versionUuid="0006e0cb-972a-8000-f92f-7f0000014e7a"/>
+          </ns2:history>
+        </ns2:Metadata>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Id" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Id @GeneratedValue</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BusinessAreaTescoClubcard" nillable="true" type="xsd:boolean"/>
+      <xsd:element name="BusinessAreaTescoClubcard_CardNumber"
+        nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=255)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BusinessAreaTesco.com" nillable="true" type="xsd:boolean"/>
+      <xsd:element name="BusinessAreaTesco.com_Email" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=255)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BusinessAreaTescoDirect" nillable="true" type="xsd:boolean"/>
+      <xsd:element name="BusinessAreaTescoDirect_Email" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=255)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BusinessAreaTescoPharmacy" nillable="true" type="xsd:boolean"/>
+      <xsd:element name="BusinessAreaTescoPharmacy_DateBirth"
+        nillable="true" type="xsd:date"/>
+      <xsd:element name="BusinessAreaTescoPharmacy_NHSNumber"
+        nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=50)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BusinessAreaTescoPharmacy_DoctorDetails"
+        nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=500)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BusinessAreaTescoOpticians" nillable="true" type="xsd:boolean"/>
+      <xsd:element name="BusinessAreaTescoOpticians_DateBirth"
+        nillable="true" type="xsd:date"/>
+      <xsd:element name="BusinessAreaTescoOpticians_TelephoneNumber"
+        nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=20)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BusinessAreaCustomerEngagementCentres"
+        nillable="true" type="xsd:boolean"/>
+      <xsd:element
+        name="BusinessAreaCustomerEngagementCentres_ReferenceNumber"
+        nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=50)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BusinessAreaPersonnel" nillable="true" type="xsd:boolean"/>
+      <xsd:element name="BusinessAreaPersonnel_EmployeeNumber"
+        nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=255)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BusinessAreaPersonnel_WorkedAt" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=255)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BusinessAreaPersonnel_EmploymentDates"
+        nillable="true" type="xsd:date"/>
+      <xsd:element name="BusinessAreaPersonnel_NationalInsuranceNumber"
+        nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=50)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BusinessAreaPersonnel_PayData" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=1000)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ConsentReleaseMedicalInformationRecords"
+        nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=255)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OtherBusinessArea" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=1000)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OtherBusinessAreaFlag" nillable="true" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

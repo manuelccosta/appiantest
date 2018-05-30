@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_210628</versionUuid>
+    <rule>
+        <name>GDPR_SAR_EmailReceived</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141294</uuid>
+        <description>GDPR SAR - Email Received</description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140826</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= load(
+  {
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: "Email Information",
+      contents: {
+        #"SYSTEM_SYSRULES_textField"(
+          label: "Email from:",
+          labelPosition: "ABOVE",
+          value: ri!Email.from,
+          saveInto: ri!Email.from,
+          refreshAfter: "UNFOCUS",
+          required: false,
+          readonly: true,
+          disabled: ri!IsReadOnly,
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_textField"(
+          label: "Subject:",
+          labelPosition: "ABOVE",
+          value: ri!Email.subject,
+          saveInto: ri!Email.subject,
+          refreshAfter: "UNFOCUS",
+          required: false,
+          readonly: true,
+          disabled: ri!IsReadOnly,
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_fileUploadField_v1"(
+          label: "Attachments:",
+          labelPosition: "ABOVE",
+          target: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_144335",
+          maxselections: null,
+          value: ri!Email.attachments,
+          saveInto: ri!Email.attachments,
+          disabled: /*ri!IsReadOnly*/
+          true(),
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_paragraphField"(
+          label: "",
+          labelPosition: "ABOVE",
+          value: ri!Email.body,
+          saveInto: ri!Email.body,
+          refreshAfter: "UNFOCUS",
+          required: false,
+          readonly: true,
+          disabled: ri!IsReadOnly,
+          height: "SHORT",
+          validations: {}
+        )
+      }
+    )
+  }
+)</definition>
+        <namedTypedValue>
+            <name>Email</name>
+            <type>
+                <name>GDPR_SAR_Email</name>
+                <namespace>urn:com:appian:types</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>IsReadOnly</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_210628"/>
+    </history>
+</contentHaul>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_207918</versionUuid>
+    <rule>
+        <name>GDPR_SAR_LetterReceived</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140832</uuid>
+        <description>GDPR SAR LetterReceived</description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140826</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= load(
+  {
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: "Post Mail",
+      contents: {
+        #"SYSTEM_SYSRULES_fileUploadField_v1"(
+          label: "Letters received",
+          labelPosition: "ABOVE",
+          target: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_144335",
+          maxselections: null,
+          value: ri!UploadedFile,
+          saveInto: ri!UploadedFile,
+          required: false,
+          disabled: ri!IsReadOnly,
+          validations: {}
+        ),
+          #"SYSTEM_SYSRULES_dateTimeField"(
+            label: "On what date was the incoming request received by the organisation? ",
+            labelPosition: "ABOVE",
+            value: ri!received_date,
+            saveInto: ri!received_date,
+            disabled: ri!IsReadOnly,
+            validations: {}
+          )
+      }
+    )
+  }
+)</definition>
+        <namedTypedValue>
+            <name>UploadedFile</name>
+            <type>
+                <name>Integer?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>IsReadOnly</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>received_date</name>
+            <type>
+                <name>dateTime</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_207918"/>
+    </history>
+</contentHaul>

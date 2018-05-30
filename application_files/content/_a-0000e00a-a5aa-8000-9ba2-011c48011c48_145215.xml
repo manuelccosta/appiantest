@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145224</versionUuid>
+    <rule>
+        <name>GDPR_SAR_RequestAssessment_ThirdParty_Partial</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145215</uuid>
+        <description>GDPR SAR - Request Assessment ThirdParty (Partial)</description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145160</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>=load(
+  {
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: "Third Party Details",
+      contents: {
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Does the third party have the legal authorization to work on the behalf?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+          value: ri!Assessment.HasLegalAuthorization,
+          saveInto: ri!Assessment.HasLegalAuthorization,
+          disabled: ri!IsReadOnly,
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Does it have legal document to prove it?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+          value: ri!Assessment.HasLegalDocument,
+          saveInto: ri!Assessment.HasLegalDocument,
+          showwhen: ri!Assessment.HasLegalAuthorization = true(),
+          disabled: ri!IsReadOnly,
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Which document do they have?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_142185",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_142185",
+          value: ri!Assessment.DocumentType,
+          saveInto: ri!Assessment.DocumentType,
+          showwhen: ri!Assessment.HasLegalDocument = true(),
+          disabled: ri!IsReadOnly,
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Is the law enforcement from this country? ",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+          value: ri!Assessment.IsLawEnforcementFromCountry,
+          saveInto: ri!Assessment.IsLawEnforcementFromCountry,
+          disabled: ri!IsReadOnly,
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Does it have court order to request?",
+          labelPosition: "ABOVE",
+          instructions: "If no reject the request",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+          value: ri!Assessment.HasCourtOrderResquestData,
+          saveInto: ri!Assessment.HasCourtOrderResquestData,
+          showwhen: ri!Assessment.IsLawEnforcementFromCountry = true(),
+          disabled: ri!IsReadOnly,
+          validations: {}
+        )
+      }
+    ),
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: "Request Details",
+      contents: {
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Is the request to broad to fulfill?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+          value: ri!Assessment.IsRequestBroadFulfill,
+          saveInto: ri!Assessment.IsRequestBroadFulfill,
+          disabled: ri!IsReadOnly,
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Is this a repeated request?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+          value: ri!Assessment.IsRepeatedRequest,
+          saveInto: ri!Assessment.IsRepeatedRequest,
+          disabled: ri!IsReadOnly,
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Has there been a reasonably long interval since the last request?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+          value: ri!Assessment.IsReasonablyLongInterval,
+          saveInto: ri!Assessment.IsReasonablyLongInterval,
+          showwhen: ri!Assessment.IsRepeatedRequest = true(),
+          disabled: ri!IsReadOnly,
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Does the request relate to a business that the organization no longer owns?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+          value: ri!Assessment.RelatedBusinessRequestOrganizationNoLongerOwns,
+          saveInto: ri!Assessment.RelatedBusinessRequestOrganizationNoLongerOwns,
+          disabled: ri!IsReadOnly,
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "Does the request relate to a date ealier than the retention period?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+          value: ri!Assessment.RelatedDateLongerThanRetentionPeriod,
+          saveInto: ri!Assessment.RelatedDateLongerThanRetentionPeriod,
+          disabled: ri!IsReadOnly,
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "What is the type of the request?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140919",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140919",
+          value: ri!Assessment.RequestType,
+          saveInto: ri!Assessment.RequestType,
+          disabled: ri!IsReadOnly,
+          validations: {}
+        )
+      }
+    )
+  }
+)</definition>
+        <namedTypedValue>
+            <name>Assessment</name>
+            <type>
+                <name>GDPR_SAR_Assessment</name>
+                <namespace>urn:com:appian:types</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>IsReadOnly</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145224"/>
+    </history>
+</contentHaul>

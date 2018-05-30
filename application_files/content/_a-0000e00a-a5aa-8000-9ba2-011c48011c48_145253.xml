@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_208906</versionUuid>
+    <rule>
+        <name>GDPR_SAR_RequestAssessment_Colleague_Partial</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145253</uuid>
+        <description>GDPR SAR - Request Assessment Colleague (Partial)</description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_145160</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= load(
+  local!more_information_from_the_requestor: null,
+  local!hold_type_of_data: null,
+  local!asking_for_further_copies: null,
+  local!fee_be_charged: null,
+  local!request_excessive: null,
+  local!organization_no_longer_owns: null,
+  {
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: "Request Details",
+      contents: {
+        #"SYSTEM_SYSRULES_columnsLayout"(
+          columns: {
+            #"SYSTEM_SYSRULES_columnLayout"(
+              contents: {
+                #"SYSTEM_SYSRULES_dropdownField"(
+                  label: "Is the request to broad to fulfill?",
+                  labelPosition: "ABOVE",
+                  placeholderLabel: "--- Select a Value ---",
+                  choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+                  choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+                  value: ri!SAR.Request.reqBroad,
+                  saveInto: ri!SAR.Request.reqBroad,
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_dropdownField"(
+                  label: "Is this a repeated request?",
+                  labelPosition: "ABOVE",
+                  placeholderLabel: "--- Select a Value ---",
+                  choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+                  choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+                  value: ri!SAR.Request.reqRepeated,
+                  saveInto: ri!SAR.Request.reqRepeated,
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_dropdownField"(
+                  label: "Has there been a reasonably long interval since the last request?",
+                  labelPosition: "ABOVE",
+                  placeholderLabel: "--- Select a Value ---",
+                  choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+                  choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+                  value: ri!SAR.Request.reqLongInterval,
+                  saveInto: ri!SAR.Request.reqLongInterval,
+                  showwhen: ri!SAR.Request.reqRepeated = true(),
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_dropdownField"(
+                  label: "Does the request relate to a business that the organization no longer owns?",
+                  labelPosition: "ABOVE",
+                  placeholderLabel: "--- Select a Value ---",
+                  choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+                  choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+                  value: ri!SAR.Request.reqOrgNoLongerOwns,
+                  saveInto: ri!SAR.Request.reqOrgNoLongerOwns,
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_dropdownField"(
+                  label: "Does the request relate to a date earlier than the retention period?",
+                  labelPosition: "ABOVE",
+                  placeholderLabel: "--- Select a Value ---",
+                  choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+                  choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_dropdownField"(
+                  label: "Is the request under an exception?",
+                  labelPosition: "ABOVE",
+                  placeholderLabel: "--- Select a Value ---",
+                  choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+                  choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+                  value: ri!SAR.Request.isException,
+                  saveInto: ri!SAR.Request.exceptionType,
+                  showwhen: like(
+                    ri!SAR.Request.dataSubject.type,
+                    "*colleague*"
+                  ),
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                )
+              }
+            ),
+            #"SYSTEM_SYSRULES_columnLayout"(
+              contents: {
+                #"SYSTEM_SYSRULES_dropdownField"(
+                  label: "What are the exceptions?",
+                  labelPosition: "ABOVE",
+                  placeholderLabel: "--- Select a Value ---",
+                  choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141859",
+                  choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141859",
+                  value: ri!SAR.Request.exceptionType,
+                  saveInto: ri!SAR.Request.exceptionType,
+                  showwhen: ri!SAR.Request.isException = true(),
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_dropdownField"(
+                  label: "Do we hold this type of data for this requestor?",
+                  labelPosition: "ABOVE",
+                  placeholderLabel: "--- Select a Value ---",
+                  choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+                  choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+                  value: ri!SAR.Request.requestorTypeOfData,
+                  saveInto: ri!SAR.Request.requestorTypeOfData,
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_dropdownField"(
+                  label: "Is the requestor asking for further copies of a document previously provided?",
+                  labelPosition: "ABOVE",
+                  placeholderLabel: "--- Select a Value ---",
+                  choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+                  choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+                  value: ri!SAR.Request.requestedFurtherCopies,
+                  saveInto: ri!SAR.Request.requestedFurtherCopies,
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_dropdownField"(
+                  label: "If so, should an administrative fee be charged?",
+                  labelPosition: "ABOVE",
+                  placeholderLabel: "--- Select a Value ---",
+                  choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+                  choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+                  value: ri!SAR.Request.chargeAditionalFee,
+                  saveInto: ri!SAR.Request.chargeAditionalFee,
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_dropdownField"(
+                  label: "Is the request manifestly unfounded or excessive?",
+                  labelPosition: "ABOVE",
+                  placeholderLabel: "--- Select a Value ---",
+                  choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+                  choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+                  value: ri!SAR.Request.reqExcessive,
+                  saveInto: ri!SAR.Request.reqExcessive,
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_dropdownField"(
+                  label: "Do we need more information from the requestor/can the request be narrowed?",
+                  labelPosition: "ABOVE",
+                  placeholderLabel: "--- Select a Value ---",
+                  choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+                  choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+                  value: ri!SAR.Request.moreInfoRequestor,
+                  saveInto: ri!SAR.Request.moreInfoRequestor,
+                  disabled: ri!IsReadOnly,
+                  validations: {}
+                )
+              }
+            )
+          }
+        )
+      }
+    )
+  }
+)</definition>
+        <namedTypedValue>
+            <name>SAR</name>
+            <type>
+                <name>GDPR_SAR_Subject_Access_Request</name>
+                <namespace>urn:com:appian:types</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>IsReadOnly</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_208906"/>
+    </history>
+</contentHaul>

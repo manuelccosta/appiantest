@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<taskReportHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>c6883b6f-2070-4a27-886f-d174f172de13</versionUuid>
+    <taskReport a:uuid="c9b88220-c7a4-4e28-af8a-06474240c856" name="GDPR_SAR_Tasks">
+        <a:description>GDPR_SAR_Tasks</a:description>
+        <a:uiExpr>=#"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_163731"()</a:uiExpr>
+        <a:urlStub>LhOrPQ</a:urlStub>
+    </taskReport>
+    <roleMap>
+        <role name="report_viewer">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000e00a-a55f-8000-9aee-01075c01075c_161</groupUuid>
+            </groups>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="c6883b6f-2070-4a27-886f-d174f172de13"/>
+    </history>
+</taskReportHaul>

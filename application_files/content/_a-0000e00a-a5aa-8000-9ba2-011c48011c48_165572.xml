@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_203328</versionUuid>
+    <rule>
+        <name>GDPR_SAR_CASE_APP_uiRecordDashboardSummary</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165572</uuid>
+        <description></description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_163725</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= #"SYSTEM_SYSRULES_dashboardLayout_v1"(
+  contents: {
+    #"SYSTEM_SYSRULES_milestoneField"(
+      labelPosition: "COLLAPSED",
+      steps: {
+        "Capture Data",
+        "Assess Request",
+        "Gather Data",
+        "Collate and Redact",
+        "Quality Control",
+        "Send Response"
+      },
+      active: 5
+    ),
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: "Case Case Details",
+      contents: {
+        #"SYSTEM_SYSRULES_columnsLayout"(
+          columns: {
+            #"SYSTEM_SYSRULES_columnLayout"(
+              contents: {
+                #"SYSTEM_SYSRULES_textField"(
+                  label: "Data Requestor Name",
+                  labelPosition: "ABOVE",
+                  value: "Mr Joe Deely",
+                  saveInto: {},
+                  refreshAfter: "UNFOCUS",
+                  readonly: true,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_textField"(
+                  label: "Long Description",
+                  labelPosition: "ABOVE",
+                  value: "Mr Joe Deely Wants to be forgotton",
+                  saveInto: {},
+                  refreshAfter: "UNFOCUS",
+                  readonly: true,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_textField"(
+                  label: "Request Receipt Date",
+                  labelPosition: "ABOVE",
+                  value: "28/06/2018",
+                  saveInto: {},
+                  refreshAfter: "UNFOCUS",
+                  readonly: true,
+                  validations: {}
+                )
+              }
+            ),
+            #"SYSTEM_SYSRULES_columnLayout"(
+              contents: {
+                #"SYSTEM_SYSRULES_textField"(
+                  label: "Case Category",
+                  labelPosition: "ABOVE",
+                  value: "Subject Access Request",
+                  saveInto: {},
+                  refreshAfter: "UNFOCUS",
+                  readonly: true,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_textField"(
+                  label: "Case Status",
+                  labelPosition: "ABOVE",
+                  value: "In Progress",
+                  saveInto: {},
+                  refreshAfter: "UNFOCUS",
+                  readonly: true,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_textField"(
+                  label: "Priority",
+                  labelPosition: "ABOVE",
+                  value: "Customer Member Priority",
+                  saveInto: {},
+                  refreshAfter: "UNFOCUS",
+                  readonly: true,
+                  validations: {}
+                )
+              }
+            ),
+            #"SYSTEM_SYSRULES_columnLayout"(
+              contents: {
+                #"SYSTEM_SYSRULES_textField"(
+                  label: "Case Deadline Date",
+                  labelPosition: "ABOVE",
+                  value: "28/07/2018",
+                  saveInto: {},
+                  refreshAfter: "UNFOCUS",
+                  readonly: true,
+                  validations: {}
+                ),
+                #"SYSTEM_SYSRULES_linkField"(
+                  label: "Previous Data Subject Requests",
+                  links: #"SYSTEM_SYSRULES_safeLink"(
+                    label: "Subject Access Request : 321"
+                  )
+                )
+                ,
+                #"SYSTEM_SYSRULES_imageField_v1"(
+                  label: "Is Active?",
+                  labelPosition: "ABOVE",
+                  images: {
+                    #"SYSTEM_SYSRULES_documentImage"(
+                      document: #"SYSTEM_SYSRULES_iconIndicator"(
+                        icon: "STATUS_OK"
+                      )
+                    )
+                  },
+                  size: "ICON",
+                  isThumbnail: false,
+                  style: "STANDARD"
+                )
+              }
+            )
+          }
+        )
+      },
+      iscollapsible: true
+    ),
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: "Case Milestones",
+      contents: {
+        /* This grid is not configured to page or sort */
+        #"SYSTEM_SYSRULES_gridField"(
+          labelPosition: "ABOVE",
+          totalCount: 5,
+          columns: {
+            #"SYSTEM_SYSRULES_gridTextColumn"(
+              label: "Name",
+              data: {
+                "Capture Data",
+                "Assess Request",
+                "Gather Data",
+                "Collate and Redact",
+                "Quality Control"
+              }
+            ),
+            #"SYSTEM_SYSRULES_gridTextColumn"(
+              label: "Start Date",
+              data: {
+                "Feb 20, 2018 05:20 PM",
+                "Feb 24, 2018 11:40 PM",
+                "Feb 24, 2018 08:40 AM",
+                "Feb 26, 2018 10:20 AM",
+                "Feb 27, 2018 10:50 AM"
+              }
+            ),
+            #"SYSTEM_SYSRULES_gridTextColumn"(
+              label: "Due Date",
+              data: {
+                "Feb 22, 2018",
+                "Feb 25, 2018",
+                "Feb 25, 2018",
+                "Feb 27, 2018",
+                "Feb 28, 2018"
+              }
+            ),
+            #"SYSTEM_SYSRULES_gridTextColumn"(
+              label: "Completion Date",
+              data: {
+                "Feb 20, 2018 05:40 PM",
+                "Feb 25, 2018 11:40 AM",
+                "Feb 25, 2018 08:40 AM",
+                "Feb 26, 2018 17:40 PM",
+                ""
+              },
+              alignment: "RIGHT"
+            ),
+            #"SYSTEM_SYSRULES_gridImageColumn_v1"(
+              label: "Completed?",
+              data: {
+                #"SYSTEM_SYSRULES_documentImage"(
+                  document: #"SYSTEM_SYSRULES_iconIndicator"(
+                    icon: "STATUS_OK"
+                  )
+                ),
+                #"SYSTEM_SYSRULES_documentImage"(
+                  document: #"SYSTEM_SYSRULES_iconIndicator"(
+                    icon: "STATUS_OK"
+                  )
+                ),
+                #"SYSTEM_SYSRULES_documentImage"(
+                  document: #"SYSTEM_SYSRULES_iconIndicator"(
+                    icon: "STATUS_OK"
+                  )
+                ),
+                #"SYSTEM_SYSRULES_documentImage"(
+                  document: #"SYSTEM_SYSRULES_iconIndicator"(
+                    icon: "STATUS_OK"
+                  )
+                ),
+                #"SYSTEM_SYSRULES_documentImage"(
+                  document: #"SYSTEM_SYSRULES_iconIndicator"(
+                    icon: "STATUS_NOTDONE"
+                  )
+                )
+              },
+              size: "ICON",
+              isThumbnail: false,
+              style: "STANDARD"
+            )
+          },
+          value: #"SYSTEM_SYSRULES_pagingInfo"(
+            startIndex: 1,
+            batchSize: 10
+          ),
+          saveInto: {}
+        )
+      },
+      iscollapsible: true
+    ),
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: "Data Providers",
+      contents: {
+        #"SYSTEM_SYSRULES_pickerFieldUsers"(
+                  label: "List of Providers",
+                  labelPosition: "ABOVE",
+                  instructions: "List of user that were provide data to the case",
+                  value: {
+                    "mary.king","maria.lopez"
+                  },
+                  saveInto: {},
+                  readonly: true,
+                  validations: {}
+                )
+      },
+      iscollapsible: true
+    ),
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: "Case Documents",
+      contents: {
+        #"SYSTEM_SYSRULES_gridField"(
+          label: "",
+          labelPosition: "ABOVE",
+          totalCount: 1,
+          columns: {
+            #"SYSTEM_SYSRULES_gridImageColumn_v1"(
+              label: "Type",
+              data: {
+                #"SYSTEM_SYSRULES_documentImage"(
+                  document: #"SYSTEM_SYSRULES_iconIndicator"(
+                    icon: "DOC_GENERIC"
+                  )
+                )
+              },
+              size: "ICON",
+              isThumbnail: false,
+              style: "STANDARD"
+            ),
+            #"SYSTEM_SYSRULES_gridTextColumn"(
+              label: "Name",
+              data: {
+                "UploadedFile.docx"
+              },
+              links: #"SYSTEM_SYSRULES_documentDownloadLink"(
+                label: "UploadedFile.docx",
+                document: "22410"
+              )
+            ),
+            #"SYSTEM_SYSRULES_gridTextColumn"(
+              label: "Description",
+              data: {
+                ""
+              }
+            ),
+            #"SYSTEM_SYSRULES_gridTextColumn"(
+              label: "Last Modified",
+              data: {
+                "2/27/2018 10:05 AM"
+              }
+            ),
+            #"SYSTEM_SYSRULES_gridTextColumn"(
+              label: "Modified By",
+              data: {
+                "Diogo Sequeira"
+              },
+              links: #"SYSTEM_SYSRULES_userRecordLink"(
+                label: "Diogo Sequeira",
+                user: "dsequeira"
+              )
+            )
+          },
+          value: #"SYSTEM_SYSRULES_pagingInfo"(
+            startIndex: 1,
+            batchSize: 5
+          ),
+          saveInto: {},
+          validations: {},
+          shadeAlternateRows: true
+        )
+      },
+      iscollapsible: true
+    ),
+    #"SYSTEM_SYSRULES_sectionLayout_v1"(
+      label: "Current Tasks and Task Audit Trail",
+      contents: {
+        #"SYSTEM_SYSRULES_gridField"(
+          label: "Current Tasks",
+          labelPosition: "ABOVE",
+          totalCount: 4,
+          columns: {
+            #"SYSTEM_SYSRULES_gridTextColumn"(
+              label: "Task Name",
+              data: {
+                "Provide Initial customer information",
+                "Data Location Exploration",
+                "Task Fulfillment",
+                "Reporting Back"
+              }
+            ),
+            #"SYSTEM_SYSRULES_gridTextColumn"(
+              label: "Assignee(s)/Owner",
+              data: {
+                "James Baker",
+                "Karen Anderson",
+                "Karen Anderson",
+                "Karen Anderson"
+              }
+            ),
+            #"SYSTEM_SYSRULES_gridTextColumn"(
+              label: "Status",
+              data: {
+                "Assigned",
+                "Assigned",
+                "Assigned",
+                "Assigned"
+              }
+            ),
+            #"SYSTEM_SYSRULES_gridTextColumn"(
+              label: "Due",
+              data: {
+                "Feb 24, 2018 00:00 AM",
+                "Feb 25, 2018 00:00 AM",
+                "Feb 26, 2018 00:00 AM",
+                "Feb 27, 2018 00:00 AM"
+              }
+            ),
+            #"SYSTEM_SYSRULES_gridTextColumn"(
+              label: "Priority",
+              data: {
+                "Normal",
+                "Normal",
+                "Normal",
+                "Normal"
+              }
+            ),
+            #"SYSTEM_SYSRULES_gridImageColumn_v1"(
+              label: "Completed",
+              data: {
+                #"SYSTEM_SYSRULES_documentImage"(
+                  document: #"SYSTEM_SYSRULES_iconIndicator"(
+                    icon: "STATUS_OK"
+                  )
+                ),
+                #"SYSTEM_SYSRULES_documentImage"(
+                  document: #"SYSTEM_SYSRULES_iconIndicator"(
+                    icon: "STATUS_NOTDONE"
+                  )
+                ),
+                #"SYSTEM_SYSRULES_documentImage"(
+                  document: #"SYSTEM_SYSRULES_iconIndicator"(
+                    icon: "STATUS_NOTDONE"
+                  )
+                ),
+                #"SYSTEM_SYSRULES_documentImage"(
+                  document: #"SYSTEM_SYSRULES_iconIndicator"(
+                    icon: "STATUS_OK"
+                  )
+                )
+              },
+              size: "ICON",
+              isThumbnail: false,
+              style: "STANDARD"
+            )
+          },
+          value: #"SYSTEM_SYSRULES_pagingInfo"(
+            startIndex: 1,
+            batchSize: 5
+          ),
+          saveInto: {},
+          validations: {},
+          shadeAlternateRows: true
+        )
+      },
+      showwhen: false,
+      iscollapsible: true
+    )
+  }
+)</definition>
+        <namedTypedValue>
+            <name>SAR</name>
+            <type>
+                <name>GDPR_SAR_Subject_Access_Request</name>
+                <namespace>urn:com:appian:types</namespace>
+            </type>
+        </namedTypedValue>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_203328"/>
+    </history>
+</contentHaul>

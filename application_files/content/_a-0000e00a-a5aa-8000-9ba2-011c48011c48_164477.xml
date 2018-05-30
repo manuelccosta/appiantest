@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_211197</versionUuid>
+    <rule>
+        <name>GDPR_SAR_RequestCategorization</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164477</uuid>
+        <description></description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140826</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= load(
+  #"SYSTEM_SYSRULES_formLayout_v1"(
+    label: "Request categorization",
+    contents: {
+      #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_142475"(
+        IsEmailGatheringData: false,
+        UploadedFile: ri!SAR.Request.letters.documentId,
+        IsReadOnly: false,
+        received_date: ri!SAR.Request.letters.dateReceived),
+ 
+      #"SYSTEM_SYSRULES_sectionLayout_v1"(
+        label: "Request",
+        contents: {#"SYSTEM_SYSRULES_checkboxField"(
+            label: "",
+            labelPosition: "ABOVE",
+            choiceLabels: {"Was the request made by a third-party?"},
+            choiceValues: {
+              true()},
+            value: ri!SAR.Request.requestor.IsThirdParty,
+            saveInto: {
+              ri!SAR.Request.requestor.isThirdParty
+            },
+            validations: {}
+          ),
+          #"SYSTEM_SYSRULES_dropdownField"(
+            label: "What is the category of the requestor?",
+            labelPosition: "ABOVE",
+            placeholderLabel: "--- Select a Value ---",
+            choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141084",
+            choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141084",
+            value: ri!SAR.Request.dataSubject.Type,
+            saveInto: ri!SAR.Request.dataSubject.Type,
+            validations: {}
+          ),
+          #"SYSTEM_SYSRULES_dropdownField"(
+            label: "What is the type of the Third Party?",
+            labelPosition: "ABOVE",
+            placeholderLabel: "--- Select a Value ---",
+            choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165846",
+            choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165846",
+            showwhen:  ri!SAR.Request.requestor.isThirdParty = true(),
+            validations: {}
+          ),
+          #"SYSTEM_SYSRULES_dropdownField"(
+            label: "Does the third party have the legal authorization to request the data on behalf of the data subject?",
+            labelPosition: "ABOVE",
+            placeholderLabel: "--- Select a Value ---",
+            choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+            choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+            saveInto: {},
+            showwhen: ri!SAR.Request.requestor.isThirdParty = true(),
+            validations: {}
+          ),
+          #"SYSTEM_SYSRULES_dropdownField"(
+            label: "Is this a government agency that is entitled to the information/documentation?",
+            labelPosition: "ABOVE",
+            placeholderLabel: "--- Select a Value ---",
+            choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+            choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+            saveInto: {},
+            showwhen:  ri!SAR.Request.requestor.isThirdParty = true (),
+            validations: {}
+          ),
+          #"SYSTEM_SYSRULES_dropdownField"(
+            label: "Is there a legally binding document requiring the production of the information (court order, power of attorney, production order)?",
+            labelPosition: "ABOVE",
+            placeholderLabel: "--- Select a Value ---",
+            choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+            choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+            saveInto: {},
+            showwhen:  ri!SAR.Request.requestor.isThirdParty= true(),
+            validations: {}
+          ),
+          #"SYSTEM_SYSRULES_dropdownField"(
+            label: "Is the request part of a law enforcement investigation?",
+            labelPosition: "ABOVE",
+            placeholderLabel: "--- Select a Value ---",
+            choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140993",
+            choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140999",
+            showwhen:  ri!SAR.Request.requestor.isThirdParty = true(),
+            validations: {}
+          ),
+            #"SYSTEM_SYSRULES_dropdownField"(
+          label: "What is the type of the request?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140919",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140919",
+          value: ri!SAR.Request.requestType,
+          saveInto: ri!SAR.Request.requestType,
+          validations: {}
+        ),
+          #"SYSTEM_SYSRULES_dropdownField"(
+          label: "What is the requestor  asking for copy of/access to?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141373",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141373",
+          value: ri!SAR.Request.askingFor,
+          saveInto: ri!SAR.Request.askingFor,
+          showwhen: like(ri!SAR.Request.requestType,"*colleague*"),
+          validations: {}
+        ),
+        #"SYSTEM_SYSRULES_dropdownField"(
+          label: "What is the requestor  asking for copy of/access to?",
+          labelPosition: "ABOVE",
+          placeholderLabel: "--- Select a Value ---",
+          choiceLabels: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141365",
+          choiceValues: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141365",
+          value: ri!SAR.Request.askingFor,
+          saveInto: ri!SAR.Request.askingFor,
+          showwhen: like(ri!SAR.Request.requestType,"*customer*"),
+          validations: {}
+        )
+        }
+      )
+    },
+    buttons: #"SYSTEM_SYSRULES_ButtonLayout"(
+      primaryButtons: {
+        #"SYSTEM_SYSRULES_ButtonWidgetSubmit"(
+          label: "Submit",
+          confirmheader: "Submit Form",
+          confirmmessage: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_144547",
+          value: true(),
+          style: "PRIMARY"
+        )
+      },
+      secondaryButtons: {}
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>SAR</name>
+            <type>
+                <name>GDPR_SAR_Subject_Access_Request</name>
+                <namespace>urn:com:appian:types</namespace>
+            </type>
+        </namedTypedValue>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_211197"/>
+    </history>
+</contentHaul>

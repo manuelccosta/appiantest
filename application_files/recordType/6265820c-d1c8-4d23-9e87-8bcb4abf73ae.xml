@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recordTypeHaul xmlns:a="http://www.appian.com/ae/types/2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <versionUuid>7b489c8f-5d90-449b-838d-caad4b097760</versionUuid>
+  <recordType a:uuid="6265820c-d1c8-4d23-9e87-8bcb4abf73ae" name="GDPR_SAR">
+    <a:pluralName>GDPR_SARs</a:pluralName>
+    <a:description/>
+    <a:urlStub>UtuNKA</a:urlStub>
+    <a:source a:uuid="0002e037-edea-8000-f92f-7f0000014e7a" xsi:type="a:ProcessModel"/>
+    <a:listViewTemplateExpr>#"SYSTEM_SYSRULES_recordGridLayoutColumns"(
+  emptygridmessage: "",
+  columns: {
+    #"SYSTEM_SYSRULES_gridLayoutColumn"(
+      label: "Case ID",
+      width: "DISTRIBUTE",
+      field: "GDPR_SAR_Subject_Access_Request.ProcessId",
+      component: #"SYSTEM_SYSRULES_recordGrid_linkField"(
+        links: {
+          #"SYSTEM_SYSRULES_recordLink"(
+            label: rf!pp.id,
+            recordtype: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165006",
+            identifier: rf!pp.id)
+        }
+      )
+    ),
+    #"SYSTEM_SYSRULES_gridLayoutColumn"(
+      label: "Case Step",
+      width: "DISTRIBUTE",
+      component: #"SYSTEM_SYSRULES_recordGrid_linkField"(
+        links: {
+          #"SYSTEM_SYSRULES_recordLink"(
+            label: rf!GDPR_SAR_Subject_Access_Request.ProcessStepName,
+            recordtype: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165006",
+            identifier: rf!pp.id)
+        }
+      )
+    ),
+    #"SYSTEM_SYSRULES_gridLayoutColumn"(
+      label: "Progress",
+      width: "DISTRIBUTE",
+      component: #"SYSTEM_SYSRULES_recordGrid_progressBarField"(
+        percentage: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165675"(
+          step: rf!GDPR_SAR_Subject_Access_Request.ProcessStep,
+          totalmilestones: 5
+        ))
+    ),
+    #"SYSTEM_SYSRULES_gridLayoutColumn"(
+      label: "Status",
+      width: "DISTRIBUTE",
+      component: #"SYSTEM_SYSRULES_recordGrid_textField"(
+        displayvalue: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165698"(rf!pp.status, rf!GDPR_SAR_Subject_Access_Request.ProcessStep))
+    ),
+    #"SYSTEM_SYSRULES_gridLayoutColumn"(
+      label: "Owner",
+      width: "DISTRIBUTE",
+      component: #"SYSTEM_SYSRULES_recordGrid_linkField"(
+        links: {
+          #"SYSTEM_SYSRULES_userRecordLink"(
+            label: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165605"(rf!User),
+            user: rf!User)
+        }
+      )
+    ),
+    #"SYSTEM_SYSRULES_gridLayoutColumn"(
+      label: "Started On",
+      width: "DISTRIBUTE",
+      component: #"SYSTEM_SYSRULES_recordGrid_textField"(
+        displayvalue: text(
+          rf!pp.startTime,
+          "MMM dd, yyyy"
+        )
+      )
+    )
+  },
+  pageSize: 50,
+  defaultSort: #"SYSTEM_SYSRULES_sortInfo"(
+    field: "pp.startTime",
+    ascending: false
+  )
+)</a:listViewTemplateExpr>
+    <a:fieldCfg name="Case Owner">
+      <a:description/>
+      <a:sourceRef>User</a:sourceRef>
+      <a:isSortable>false</a:isSortable>
+      <a:isSearchable>false</a:isSearchable>
+      <a:isFacet>true</a:isFacet>
+      <a:facetType>CUSTOM_BUCKETS_CLOSED</a:facetType>
+      <a:isExclusiveFacet>true</a:isExclusiveFacet>
+      <a:facetLabelExpr>"Case Owner"</a:facetLabelExpr>
+      <a:facetOption>
+        <a:labelExpr>"Me"</a:labelExpr>
+        <a:facetOperator>IN</a:facetOperator>
+        <a:lowerLimitExpr/>
+        <a:upperLimitExpr/>
+        <a:values>loggedInUser()</a:values>
+      </a:facetOption>
+      <a:facetOption>
+        <a:labelExpr>"Others"</a:labelExpr>
+        <a:facetOperator>NOT_IN</a:facetOperator>
+        <a:lowerLimitExpr/>
+        <a:upperLimitExpr/>
+        <a:values>loggedInUser()</a:values>
+      </a:facetOption>
+      <a:sortOrderIndex>0</a:sortOrderIndex>
+      <a:facetOrderIndex>0</a:facetOrderIndex>
+      <a:visibilityExpr/>
+      <a:defaultOptionExpr/>
+      <a:allowMultipleSelections>true</a:allowMultipleSelections>
+    </a:fieldCfg>
+    <a:detailViewCfg>
+      <a:nameExpr>="Summary"</a:nameExpr>
+      <a:uiExpr>#"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165572"(rf!GDPR_SAR_Subject_Access_Request)</a:uiExpr>
+      <a:visibilityExpr>=true()</a:visibilityExpr>
+      <a:urlStub>summary</a:urlStub>
+      <a:headerExpr/>
+    </a:detailViewCfg>
+    <a:defaultFilter>
+      <a:field>pm.name</a:field>
+      <a:operator>=</a:operator>
+      <a:valueExpression>"Data Subject Request"</a:valueExpression>
+    </a:defaultFilter>
+    <a:isSystem>false</a:isSystem>
+    <a:dataSrcExpr/>
+    <a:facetsListExpr/>
+    <a:titleExpr/>
+    <a:defaultFiltersExpr/>
+    <a:layoutType>GRID</a:layoutType>
+    <a:security>16383</a:security>
+    <a:hideLatestNews>false</a:hideLatestNews>
+    <a:isExportable>true</a:isExportable>
+  </recordType>
+  <roleMap/>
+  <history>
+    <historyInfo versionUuid="5deb7943-ce07-4421-825f-54f9f4e43b9c"/>
+    <historyInfo versionUuid="7b489c8f-5d90-449b-838d-caad4b097760"/>
+  </history>
+</recordTypeHaul>

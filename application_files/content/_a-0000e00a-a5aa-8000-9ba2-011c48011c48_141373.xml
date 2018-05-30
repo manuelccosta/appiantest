@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165188</versionUuid>
+    <constant>
+        <name>GDPR_SAR_DATATYPEREQUESTCOLLEAGUE</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_141373</uuid>
+        <description>Data Type Request Colleague</description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140803</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <typedValue>
+            <type>
+                <name>Text?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+            <value>
+                <el>Email communications (party to or mentioned in)</el>
+                <el>Chat history (Lync)</el>
+                <el>Call recordings (as applicable) </el>
+                <el>Disciplinary information or grievance records</el>
+                <el>Performance information</el>
+                <el>Location tracking</el>
+                <el>Security pass logs</el>
+                <el>Application form and interview notes</el>
+                <el>Offer letter</el>
+                <el>Employment contract and any associated terms and conditions  </el>
+                <el>Copies of right-to-work documents (e.g. passport or visa)</el>
+                <el>Opt-out forms regarding Sunday working and the Working Time Regulations</el>
+                <el>Emergency contact details</el>
+                <el>Records of absence from work (e.g. sickness)</el>
+                <el>Documents relating to any changes in role such as letters outlining a new role or payroll changes</el>
+                <el>Training records</el>
+                <el>Young Workers’ Working Time Regulations form, if applicable</el>
+                <el>Child’s Work Permit and Child Safety letter, if applicable.</el>
+                <el>CCTV footage </el>
+                <el>Income verification documents</el>
+                <el>Record of employment history</el>
+            </value>
+        </typedValue>
+        <isEnvironmentSpecific>false</isEnvironmentSpecific>
+    </constant>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165188"/>
+    </history>
+</contentHaul>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e070-b047-8000-9ba2-011c48011c48_224810</versionUuid>
+    <rule>
+        <name>GDPR_SAR_CASE_APP_getPortalReportColumn</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_164726</uuid>
+        <description></description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140797</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= with(
+  local!columnData: index(
+    ri!data,
+    ri!columnConfig.field,
+    {}
+  ),
+  local!columnDataCount: count(
+    local!columnData
+  ),
+  if(
+    ri!columnConfig.configuredFormatting = "PRIORITY_ICON",
+    #"SYSTEM_SYSRULES_gridImageColumn"(
+      label: ri!columnConfig.label,
+      field: ri!columnConfig.field,
+      data: if(
+        #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165016"(
+          ri!data
+        ),
+        {},
+        apply(
+          #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165028"(
+            local!columnData,
+            _
+          ),
+          1 + enumerate(
+            local!columnDataCount
+          )
+        )
+      ),
+      size: "ICON"
+    ),
+    #"SYSTEM_SYSRULES_gridTextColumn"(
+      label: ri!columnConfig.label,
+      field: ri!columnConfig.field,
+      data: if(
+        local!columnDataCount &gt; 0,
+        apply(
+          #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_165045"(
+            ri!columnConfig.configuredFormatting,
+            local!columnData,
+            _
+          ),
+          1 + enumerate(
+            local!columnDataCount
+          )
+        ),
+        {}
+      ),
+      links: if(
+        and(
+          ri!showLink,
+          ri!columnConfig.configuredDrilldown = "TASK_DETAILS"
+        ),
+        apply(
+          #"SYSTEM_SYSRULES_processTaskLink"(
+            task: _
+          ),
+          index(
+            ri!data,
+            ri!columnConfig.drilldownField,
+            {}
+          )
+        ),
+        if(
+          and(
+            ri!showLink,
+            or(
+              ri!columnConfig.configuredDrilldown = "USER_PROFILE",
+              ri!columnConfig.configuredDrilldown = "PROCESS_INITIATOR"
+            )
+          ),
+          apply(
+            #"SYSTEM_SYSRULES_userRecordLink"(
+              user: _
+            ),
+            index(
+              ri!data,
+              ri!columnConfig.drilldownField,
+              {}
+            )
+          ),null
+          /*if(
+            and(
+              ri!showLink,
+              ri!columnConfig.configuredDrilldown = "PROCESS_DASHBOARD",
+              ri!recordType = "Order"
+            ),
+            apply(
+              a!recordLink(
+                recordType: cons!GDPR_SAR_CASE_APP_OrderRecordType,
+                identifier: _
+              ),
+              index(
+                ri!data,
+                ri!columnConfig.drilldownField,
+                {}
+              )
+            ),
+            if(
+              and(
+                ri!showLink,
+                ri!columnConfig.configuredDrilldown = "PROCESS_DASHBOARD",
+                ri!recordType = "SR"
+              ),
+              apply(
+                a!recordLink(
+                  recordType: cons!GDPR_SAR_CASE_APP_SR_RECORD_TYPE,
+                  identifier: _
+                ),
+                index(
+                  ri!data,
+                  ri!columnConfig.drilldownField,
+                  {}
+                )
+              ),
+              if(
+                and(
+                  ri!showLink,
+                  ri!columnConfig.configuredDrilldown = "PROCESS_DETAILS"
+                ),
+                apply(
+                  a!recordLink(
+                    recordType: cons!GDPR_SAR_CASE_APP_CUSTOMER_RECORD_TYPE,
+                    identifier: _
+                  ),
+                  index(
+                    ri!data,
+                    ri!columnConfig.drilldownField,
+                    {}
+                  )
+                ),
+                null
+              )
+            )
+          )*/
+        )
+      )
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>columnConfig</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>data</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>showLink</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>recordType</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_166984"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_223020"/>
+        <historyInfo versionUuid="_a-0000e070-b047-8000-9ba2-011c48011c48_224810"/>
+    </history>
+</contentHaul>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_207856</versionUuid>
+    <rule>
+        <name>GDPR_SAR_GatheringData</name>
+        <uuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_142268</uuid>
+        <description>GDPR SAR - Gathering data from email or letter and SAR request</description>
+        <parentUuid>_a-0000e00a-a5aa-8000-9ba2-011c48011c48_140826</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>= load(
+  #"SYSTEM_SYSRULES_formLayout_v1"(
+    label: "Capture Data",
+    instructions: "",
+    contents: {
+      #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_142757"(
+        SAR:ri!SAR
+      )
+    },
+    buttons: #"SYSTEM_SYSRULES_ButtonLayout"(
+      primaryButtons: {
+        #"SYSTEM_SYSRULES_ButtonWidgetSubmit"(
+          label: "Missing Data",
+          confirmheader: "Invalid Form",
+          confirmmessage: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_144537",
+          confirmbuttonlabel: "",
+          value: false(),
+          saveInto: ri!SAR.Request.Isvalid,
+          size: "STANDARD",
+          style: "DESTRUCTIVE"
+        ),
+        #"SYSTEM_SYSRULES_ButtonWidgetSubmit"(
+          label: "Submit",
+          confirmheader: "Submit Form",
+          confirmmessage: #"_a-0000e00a-a5aa-8000-9ba2-011c48011c48_144547",
+          value: true(),
+          saveInto: ri!SAR.Request.Isvalid,
+          style: "PRIMARY"
+        )
+      },
+      secondaryButtons: {
+       #"SYSTEM_SYSRULES_ButtonWidgetSubmit"(
+         label: "Cancel",
+         value: true,
+         saveInto: ri!cancel,
+         style: "LINK",
+         skipValidation: true
+       )
+     }
+    ),
+    validations: {}
+  )
+)</definition>
+        <namedTypedValue>
+            <name>cancel</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>SAR</name>
+            <type>
+                <name>GDPR_SAR_Subject_Access_Request</name>
+                <namespace>urn:com:appian:types</namespace>
+            </type>
+        </namedTypedValue>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e00a-a5aa-8000-9ba2-011c48011c48_207856"/>
+    </history>
+</contentHaul>
